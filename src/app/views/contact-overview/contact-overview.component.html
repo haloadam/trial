@@ -1,0 +1,69 @@
+<div class="contact-overview-container" *ngIf="contactForm">
+  <div class="contact-overview-content">
+    <mat-tab-group animationDuration="200ms" *ngIf="!isError else showErrorMsg" (selectedTabChange)="tabChange($event)">
+      <mat-tab label="Add contact">
+        <div class="contact-overview-add-contact-content" [formGroup]="contactForm">
+          <div class="grid-container">
+            <div *ngFor="let field of fields" class="field-container">
+              <mat-form-field appearance="fill">
+                <mat-label>{{field.placeholder | titlecase}}</mat-label>
+                <mat-icon matPrefix>{{field.icon}}</mat-icon>
+                <input matInput autocomplete="off" formControlName="{{field.placeholder}}">
+              </mat-form-field>
+            </div>
+          </div>
+          <button mat-button [disabled]="contactForm.invalid" (click)="addNewContact()">
+            <span>Add contact</span>
+            <div class="added-contact-counter" *ngIf="showContactCount">
+              {{contactCount}}
+            </div>
+          </button>
+        </div>
+      </mat-tab>
+      <mat-tab label="View contact">
+        <div class="contact-overview-view-contact-content">
+          <div class="header-row">
+            <app-search-bar (searchTerm)="searchContacts($event)"></app-search-bar>
+          </div>
+
+          <ng-container #noResult
+            *ngIf="!(displayedContacts$ | async)?.length && !(displayedSampleContacts$ | async)?.length">
+            <div class="lottie-container">
+              <div class="title">
+                no search result for <span>{{searchTerm}}!</span>
+              </div>
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+              <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_nrtm9xfr.json" background="transparent"
+                speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+            </div>
+          </ng-container>
+
+          <div class="grid-container">
+            <div *ngFor="let contact of displayedSampleContacts$ | async" class="contact-card">
+              <app-contact-card [contact]="contact"></app-contact-card>
+            </div>
+          </div>
+
+          <ng-container *ngIf="(displayedContacts$ | async)?.length">
+            <app-divider [text]="'New Contacts'"></app-divider>
+            <div class="grid-container">
+              <div *ngFor="let contact of displayedContacts$ | async" class="contact-card">
+                <app-contact-card [contact]="contact" [showMenu]="true"
+                  (removableContact)="removeContact($event)"></app-contact-card>
+              </div>
+            </div>
+          </ng-container>
+
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
+<ng-template #showErrorMsg>
+  <div class="error-msg-container">
+    <div class="msg-box">
+      An unexpected error happened, please retry later.
+    </div>
+  </div>
+</ng-template>

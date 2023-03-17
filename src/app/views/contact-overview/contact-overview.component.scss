@@ -1,0 +1,158 @@
+@use "src/styles/colors";
+@use "src/styles/scrollbar";
+
+:host {
+  ::ng-deep .mat-mdc-tab-group {
+    height: 100%;
+  }
+
+  ::ng-deep .mat-mdc-tab-body-wrapper {
+    height: 100%;
+  }
+
+  ::ng-deep .mat-mdc-button:disabled {
+    opacity: 0.4;
+  }
+
+  ::ng-deep .mdc-button .mdc-button__label {
+    display: flex;
+  }
+
+  ::ng-deep .mat-mdc-tab-body.mat-mdc-tab-body-active {
+    @include scrollbar.scrollTheme(colors.$light-foreground, colors.$primary-color, colors.$light-primary-color );
+  }
+}
+
+.contact-overview-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://sparksoft.hu/wp-content/uploads/2022/02/marketing-bg6.png");
+
+  .contact-overview-content {
+    width: 70vw;
+    height: 800px;
+    background-color: colors.$light-foreground;
+    border-radius: 10px;
+    opacity: 0.9;
+
+
+    .error-msg-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .msg-box {
+        background-color: colors.$error-box-color;
+        border: 2px solid colors.$error-border-color;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        height: 40px;
+        width: 400px;
+        border-radius: 10px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .contact-overview-add-contact-content {
+      display: flex;
+      margin-top: 50px;
+      align-items: center;
+      flex-direction: column;
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 300px);
+
+        .field-container {
+          mat-icon {
+            color: colors.$icon-color;
+          }
+        }
+      }
+
+      button {
+        display: flex;
+        width: 300px;
+        height: 40px;
+        color: white;
+        background-color: colors.$primary-color;
+        position: relative;
+        right: 25px;
+        margin-top: 25px;
+      }
+    }
+
+    .contact-overview-view-contact-content {
+      display: flex;
+      flex-direction: column;
+
+      .header-row {
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        app-search-bar {
+          position: relative;
+          top: 15px
+        }
+      }
+
+      .lottie-container {
+        width: 100%;
+        height: 20vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .title {
+          font-size: 20px;
+          color: colors.$text-color;
+          font-family: Arial, Helvetica, sans-serif;
+          font-style: italic;
+
+          span {
+            font-size: 30px;
+            color: colors.$primary-color;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .grid-container {
+        display: flex;
+        flex-flow: row wrap;
+        box-sizing: border-box;
+        justify-content: center;
+
+        .contact-card {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
+.added-contact-counter {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  left: 105px;
+  bottom: 20px;
+  font-size: smaller;
+  border-radius: 50%;
+  background-color: colors.$error-box-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}

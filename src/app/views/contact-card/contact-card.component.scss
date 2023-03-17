@@ -1,0 +1,100 @@
+@use "src/styles/colors";
+
+:host {
+  height: 200px;
+  z-index: 0;
+
+  ::ng-deep .mat-expansion-panel {
+    width: 300px;
+  }
+
+  ::ng-deep .mat-expansion-panel-header {
+    height: 100px;
+    padding: 5px !important;
+  }
+
+  ::ng-deep .mat-expansion-indicator {
+    position: absolute;
+    right: 15px;
+    top: 15px
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.avatar-1 {
+  border: 3px solid colors.$avatar-1;
+}
+
+.avatar-2 {
+  border: 3px solid colors.$avatar-2;
+}
+
+.avatar-3 {
+  border: 3px solid colors.$avatar-3;
+}
+
+.avatar-4 {
+  border: 3px solid colors.$avatar-4;
+}
+
+.avatar-5 {
+  border: 3px solid colors.$avatar-5;
+}
+
+.avatar-6 {
+  border: 3px solid colors.$avatar-6;
+}
+
+.avatar-7 {
+  border: 3px solid colors.$avatar-7;
+}
+
+.avatar-8 {
+  border: 3px solid colors.$avatar-8;
+}
+
+.avatar-9 {
+  border: 3px solid colors.$avatar-9;
+}
+
+.avatar-10 {
+  border: 3px solid colors.$avatar-10;
+}
+
+.more {
+  margin-left: unset !important;
+}
+
+.delete-btn {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contact-info {
+  width: 100%;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  color: colors.$text-color;
+
+  .name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+
+  .row {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+      transform: scale(0.7);
+      color: colors.$icon-color;
+    }
+  }
+}

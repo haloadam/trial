@@ -1,0 +1,41 @@
+@use "src/styles/colors";
+
+.divider-container {
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  color: colors.$primary-color;
+
+  hr {
+    background-color: colors.$primary-color;
+    height: 1px;
+    width: 45%;
+  }
+
+  mat-icon {
+    &:first-child {
+      position: relative;
+      left: 15px;
+    }
+
+    &:last-child {
+      position: relative;
+      right: 15px;
+    }
+  }
+
+  div {
+    padding: 5px 10px;
+    background-color: colors.$primary-color;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 10vw;
+
+    span {
+      color: colors.$light-primary-color;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  }
+}

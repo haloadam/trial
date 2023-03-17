@@ -1,0 +1,45 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <div class="delete-btn" *ngIf="showMenu">
+        <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation();">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+      <div>
+        <img [src]="getRandomImage()" height="50" width="50" class="avatar" [ngClass]="getRandomClass()">
+      </div>
+      <div class="contact-info">
+        <div class="row name">
+          {{contact.name | titlecase}}
+        </div>
+        <div class="row">
+          <mat-icon>call</mat-icon>
+          {{contact.phone}}
+        </div>
+        <div class="row">
+          <mat-icon>home</mat-icon>
+          {{contact.address!.city}}
+        </div>
+      </div>
+    </mat-expansion-panel-header>
+    <div class="contact-info more">
+      <div class="row">
+        <mat-icon>mail</mat-icon>
+        {{contact.email}}
+      </div>
+      <div class="row">
+        <mat-icon>apartment</mat-icon>
+        {{contact.company!.name}}
+      </div>
+      <div class="row">
+        <mat-icon>language</mat-icon>
+        {{contact.website}}
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="removeContact()">Delete</button>
+</mat-menu>
